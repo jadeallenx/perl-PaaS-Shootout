@@ -1,4 +1,5 @@
-use Dancer;
+use Mojolicious::Lite;
+use Mojo::JSON;
 
 use Try::Tiny;
 use Regexp::Common qw(net);
@@ -6,18 +7,13 @@ use DateTime;
 use DateTime::TimeZone;
 use Geo::IP;
 
-set logger => 'console';
-
 my $gi = Geo::IP->open( "/usr/local/share/GeoIP/GeoLiteCity.dat", GEOIP_MEMORY_CACHE ) or die;
+my $json = Mojo::JSON->new();
 
 post '/' => sub {
-    my $ref;
-    try {
-        $ref = from_json(request->body, { allow_nonref => 1 });
-    }
-    catch {
-        send_error('Bad request', 400);
-    };
+    my $self = shift;
+
+    my $ref = $json->decode($self->req->body);
 
     if ( ref($ref) ne "ARRAY" ) {
         $ref = [ $ref ];
@@ -46,8 +42,8 @@ post '/' => sub {
 
     }
 
-    content_type 'application/json';
-    return to_json($out);
+    return $self->render_json($out);
+
 };
 
-start;
+app->start;
