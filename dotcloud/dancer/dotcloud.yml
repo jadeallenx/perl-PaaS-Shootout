@@ -1,0 +1,11 @@
+www:
+    type: perl
+    approot: geotz
+    requirements:
+        - Dancer
+        - Try::Tiny
+        - Regexp::Common
+        - DateTime
+        - DateTime::TimeZone
+        - JSON
+        - Geo::IP
