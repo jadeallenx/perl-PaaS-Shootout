@@ -1,11 +1,12 @@
 www:
     type: perl
     approot: geotz
+    prebuild: ./prebuild.sh
     requirements:
+        - Plack::Request
         - Dancer
         - Try::Tiny
         - Regexp::Common
         - DateTime
         - DateTime::TimeZone
         - JSON
-        - Geo::IP
