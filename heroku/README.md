@@ -4,7 +4,7 @@ To deploy this in your own environment, you'll need to do something like the fol
 
 ```
 cp -a mojo /tmp/heroku
-cd /tmp/heroku
+cd /tmp/heroku/mojo
 git init
 git add *
 git commit -a -m'Initial commit'
