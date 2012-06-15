@@ -1,0 +1,9 @@
+name: yapc-geotz
+framework:
+    type: perl
+processes:
+    web: plackup --port $PORT app.psgi
+hooks:
+  post-staging:
+    - bash prebuild.sh
+
