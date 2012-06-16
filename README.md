@@ -10,6 +10,7 @@ Query the service
 Perl
 ----
 * Dancer (running on dotcloud) http://dancerperlpaas-mrallen1.dotcloud.com
+* Dancer (running on Stackato) http://yapc-geotz.stacka.to/
 * Mojolicious (running on Heroku) http://blazing-sky-3007.herokuapp.com
 
 Python
