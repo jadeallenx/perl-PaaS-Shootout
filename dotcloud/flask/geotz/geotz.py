@@ -17,12 +17,14 @@ def lookup():
     for ip in request.json:
         r = gi.record_by_addr(ip)
         tz = timezone(r['time_zone'])
+        td = tz.utcoffset(datetime.utcnow())
+        offset = (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
         rv[ip] = { 
             'country': r['country_name'],
 #            'region': r['region'],
             'city': r['city'],
             'time_zone': r['time_zone'],
-            'utc_offset': int(tz.utcoffset(datetime.utcnow()).total_seconds())
+            'utc_offset': int(offset)
         }
 
     response = make_response(json.dumps(rv))
