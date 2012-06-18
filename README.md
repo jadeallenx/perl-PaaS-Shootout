@@ -5,7 +5,7 @@ Source code for the Perl Platform as a Service talk at YAPC::NA 2012
 
 Query the service
 
-`curl -s -X POST -d'["24.24.24.24","8.8.8.8"]' <URL> | json_pp`
+`curl -s -H'Content-Type: application/json' -X POST -d'["24.24.24.24","8.8.8.8"]' <URL> | json_pp`
 
 Perl
 ----
