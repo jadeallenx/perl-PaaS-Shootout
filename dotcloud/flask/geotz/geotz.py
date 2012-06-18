@@ -19,7 +19,7 @@ def lookup():
         tz = timezone(r['time_zone'])
         rv[ip] = { 
             'country': r['country_name'],
-            'region': r['region'],
+#            'region': r['region'],
             'city': r['city'],
             'time_zone': r['time_zone'],
             'utc_offset': int(tz.utcoffset(datetime.utcnow()).total_seconds())
